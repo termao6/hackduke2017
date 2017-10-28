@@ -1,0 +1,23 @@
+{
+  "name": "hackduke17",
+  "version": "1.0.0",
+  "description": "solar panel offset",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkey5/hackduke2017.git"
+  },
+  "author": "Teresa Mao, Russell Llave, Joyce Zhou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rkey5/hackduke2017/issues"
+  },
+  "homepage": "https://github.com/rkey5/hackduke2017#readme",
+  "dependencies": {
+    "@google/maps": "^0.4.5",
+    "express": "^4.16.2"
+  }
+}
