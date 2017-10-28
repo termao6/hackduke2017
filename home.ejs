@@ -1,0 +1,136 @@
+<html>
+ <head>
+    <style type="text/css">   
+        .jumbotron{
+           background-image:url('solarpanel3.jpeg');
+            height:100vh;
+            background-repeat: no-repeat;
+            background-size:  100% 100% ;
+            border-bottom:1px solid powderblue;
+            width: 100%;
+            text-align: center;
+            text-decoration-color: blue;
+        }
+        body{
+            background-color:#e9e9e9
+        }
+        #map {
+          height: 95%;
+          width: 90%;
+        margin: auto ;
+        padding: 10px;
+            
+      }
+        .information{
+            height:100vh;
+            width: 100%;
+        }
+      
+      
+    </style>
+  </head>
+    
+
+<!-- The scrollable area -->
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    
+    
+<!-- The navbar - The <a> elements are used to jump to a section in the scrollable area -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+...
+  <ul class="nav navbar-nav">
+    <li><a href="#section1">Home</a></li>
+    <li><a href="#section2">Website Details</a></li>
+    <li><a href="#section3">Map</a></li>
+    
+    ...
+</nav>
+
+<!-- Section 1 -->
+<div id="section1">
+  <div class="container">
+        <div class="jumbotron">
+        <h1>Implementing solar panels in your city</h1> 
+        <p>Use the map below to find the blah 😀 </p> 
+    </div>
+      </div>
+</div>
+    
+<div id="section2">
+    <div class = "information">
+        <h1>Implementing solar panels in your city</h1> 
+        <p>Use the map below to find the blah 😀 </p> 
+    </div>
+    
+</div>
+  
+    
+<div id = "section3">
+    <div class = "map">
+        
+    </div>
+</div>
+    
+<div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 2,
+          center: new google.maps.LatLng(2.8,-187.3),
+          mapTypeId: 'terrain'
+        });
+
+        // Create a <script> tag and set the USGS URL as the source.
+        var script = document.createElement('script');
+        // This example uses a local copy of the GeoJSON stored at
+        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
+
+      // Loop through the results array and place a marker for each
+      // set of coordinates.
+      window.eqfeed_callback = function(results) {
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+        }
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSvSTNWlAitGoJjohFUcr1jRl9LP71sTc&callback=initMap">
+    </script>
+    
+    
+...
+
+</body>
+     <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    
+    
+<script type = "text/javascript">
+   
+    var offset = 80;
+    $('.navbar li a').click(function(event){
+                            event.preventDefault();
+    $($(this).attr('href'))[0].scrollIntoView();
+    scrollBy(0,-offset);
+    });
+                            
+</script>     
+    
+</html>
